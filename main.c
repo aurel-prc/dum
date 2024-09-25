@@ -42,7 +42,7 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
         for (int i = 0; i < roofHeight; i++) {
             // +1 pro \0
             const size_t middleSpaceLength = 1 + i * 2;
-            // Namisto middleSpaceLength+1 by melo byt +2, ale middleSpaceLength ma +1 kvuli \0.
+            // Namísto middleSpaceLength+1 by mělo být +2, ale middleSpaceLength má +1 kvůli \0.
             const size_t outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 1)) / 2;
 
             char outerSpace[outerSpaceLength];
@@ -64,9 +64,9 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
                 continue;
             }
 
-            // Normalne by to bylo i*2-1, ale s +1 pro \0 se to zrusi.
+            // Normálně by to bylo i*2-1, ale s +1 pro \0 se to zruší.
             const int middleSpaceLength = i * 2;
-            // To samy jak prvni outerSpaceLength.
+            // To samý jak první outerSpaceLength.
             const int outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 1)) / 2;
 
             char outerSpace[outerSpaceLength];
@@ -78,7 +78,7 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
         }
     }
 
-    // Normalne by to bylo houseWidth-2, ale s +1 pro \0 to prejde na -1.
+    // Normálně by to bylo houseWidth-2, ale s +1 pro \0 to přejde na -1.
     const size_t baseLength = houseWidth - 1;
     char base[baseLength];
     repeat_char(base, baseLength, '-');
