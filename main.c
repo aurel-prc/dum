@@ -3,7 +3,7 @@
 
 typedef enum {
     SUCCESS,
-    HOUSE_WIDTH_NEGATIVE_OR_ZERO,
+    HOUSE_WIDTH_TOO_SMALL,
     HOUSE_HEIGHT_TOO_SMALL,
     FENCE_LENGTH_NEGATIVE_OR_ZERO,
 } InputError;
@@ -26,8 +26,8 @@ char* repeat_char(const char c, const int count) {
 }
 
 InputError print_house(const int houseWidth, const int houseHeight, const int fenceLength) {
-    if (houseWidth <= 0) {
-        return HOUSE_WIDTH_NEGATIVE_OR_ZERO;
+    if (houseWidth < 3) {
+        return HOUSE_WIDTH_TOO_SMALL;
     } if (houseHeight < 3) {
         return HOUSE_HEIGHT_TOO_SMALL;
     } if (fenceLength <= 0) {
@@ -128,7 +128,7 @@ int main(void)
 {
     int houseWidth, houseHeight, fenceLength;
 
-    printf("Enter the house width, the house height, and the fence length. Each number must be greater than 0 and separated by commas. The house height must be greater or equal to 3.\n");
+    printf("Enter the house width, the house height, and the fence length. Each number must be greater than 0 and separated by commas. The house width and height must be greater or equal to 3.\n");
     scanf("%d,%d,%d", &houseWidth, &houseHeight, &fenceLength);
 
     printf("\n");
@@ -136,11 +136,11 @@ int main(void)
     switch (print_house(houseWidth, houseHeight, fenceLength)) {
         case SUCCESS:
             return 0;
-        case HOUSE_WIDTH_NEGATIVE_OR_ZERO:
-            printf("House width is negative or zero.\n");
+        case HOUSE_WIDTH_TOO_SMALL:
+            printf("House width is smaller than 3.\n");
             return -1;
         case HOUSE_HEIGHT_TOO_SMALL:
-            printf("House height is negative or ero.\n");
+            printf("House height is smaller than 3.\n");
             return -1;
         case FENCE_LENGTH_NEGATIVE_OR_ZERO:
             printf("Fence length negative or zero.\n");
