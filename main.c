@@ -112,7 +112,6 @@ int main(void)
 
     printf("Enter the house width, the house height, and the fence length. Each number must be greater than 0 and separated by commas. The house height must be greater or equal to 3.\n");
     scanf("%d,%d,%d", &houseWidth, &houseHeight, &fenceLength);
-    printf("House width: %d House height: %d Fence length: %d", houseWidth, houseHeight, fenceLength);
 
     printf("\n");
 
