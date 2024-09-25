@@ -94,17 +94,26 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
 
     char interior[houseWidth - 1]; // -1 = -2 + 1
 
-    for (int i = 0; i < houseWidth - 2; i++) {
-        if (i % 2 == 0) {
-            interior[i] = '*';
-        } else {
-            interior[i] = '#';
-        }
-    }
-
     interior[houseWidth - 2] = '\0';
 
     for (int i = 0; i < houseHeight - 2; i++) {
+
+        for (int j = 0; j < houseWidth - 2; j++) {
+            if (i % 2 == 0) {
+                if (j % 2 == 0) {
+                    interior[j] = '#';
+                } else {
+                    interior[j] = '*';
+                }
+            } else {
+                if (j % 2 == 0) {
+                    interior[j] = '*';
+                } else {
+                    interior[j] = '#';
+                }
+            }
+        }
+
         printf("|%s| %s\n", interior, fence);
     }
 
