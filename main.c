@@ -40,8 +40,10 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
 
     if (houseWidth % 2 == 0) {
         for (int i = 0; i < roofHeight; i++) {
+            // +1 pro \0
             const size_t middleSpaceLength = 1 + i * 2;
-            const size_t outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 2)) / 2;
+            // Namisto middleSpaceLength+1 by melo byt +2, ale middleSpaceLength ma +1 kvuli \0.
+            const size_t outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 1)) / 2;
 
             char outerSpace[outerSpaceLength];
             repeat_char(outerSpace, outerSpaceLength, ' ');
@@ -62,8 +64,10 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
                 continue;
             }
 
-            const int middleSpaceLength = 1 + i * 2 - 1;
-            const int outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 2)) / 2;
+            // Normalne by to bylo i*2-1, ale s +1 pro \0 se to zrusi.
+            const int middleSpaceLength = i * 2;
+            // To samy jak prvni outerSpaceLength.
+            const int outerSpaceLength = 1 + (houseWidth - (middleSpaceLength + 1)) / 2;
 
             char outerSpace[outerSpaceLength];
             repeat_char(outerSpace, outerSpaceLength, ' ');
@@ -74,7 +78,8 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
         }
     }
 
-    const size_t baseLength = 1 + houseWidth - 2;
+    // Normalne by to bylo houseWidth-2, ale s +1 pro \0 to prejde na -1.
+    const size_t baseLength = houseWidth - 1;
     char base[baseLength];
     repeat_char(base, baseLength, '-');
 
