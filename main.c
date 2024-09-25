@@ -96,9 +96,9 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
 
     for (int i = 0; i < houseWidth - 2; i++) {
         if (i % 2 == 0) {
-            interior[i] = '#';
-        } else {
             interior[i] = '*';
+        } else {
+            interior[i] = '#';
         }
     }
 
