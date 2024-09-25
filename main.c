@@ -82,24 +82,34 @@ InputError print_house(const int houseWidth, const int houseHeight, const int fe
 
     char fence[fenceLength + 1];
 
-    for (int j = 0; j < fenceLength * 2; j++) {
-        if (j % 2 == 0) {
-            fence[j] = '-';
+    for (int i = 0; i < fenceLength; i++) {
+        if (i % 2 == 0) {
+            fence[i] = '-';
         } else {
-            fence[j] = '|';
+            fence[i] = '|';
         }
     }
 
     fence[fenceLength] = '\0';
 
-    char* betweenWallsSpace = repeat_char(' ', houseWidth - 2);
+    char interior[houseWidth - 1]; // -1 = -2 + 1
 
-    for (int i = 0; i < houseHeight - 2; i++) {
-        printf("|%s| %s\n", betweenWallsSpace, fence);
+    for (int i = 0; i < houseWidth - 2; i++) {
+        if (i % 2 == 0) {
+            interior[i] = '#';
+        } else {
+            interior[i] = '*';
+        }
     }
 
-    free(betweenWallsSpace);
+    interior[houseWidth - 2] = '\0';
+
+    for (int i = 0; i < houseHeight - 2; i++) {
+        printf("|%s| %s\n", interior, fence);
+    }
+
     printf("+%s+ %s\n", base, fence);
+    free(interior);
     free(fence);
     free(base);
 
